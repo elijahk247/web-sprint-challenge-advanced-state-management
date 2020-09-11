@@ -23,7 +23,12 @@ const SmurfsForm = (props) => {
   }
 
   const handleSubmit = e => {
-    props.postSmurf(smurfInfo);
+    const newSmurf = {
+      ...smurfInfo,
+      id: uuid()
+    }
+
+    props.postSmurf(newSmurf);
   }
 
   return(
@@ -45,7 +50,7 @@ const SmurfsForm = (props) => {
           onChange={handleChange}
         />
 
-        <button onClick={() => handleSubmit}>Add Smurf</button>
+        <button onClick={handleSubmit}>Add Smurf</button>
       </form>
     </div>
   )
